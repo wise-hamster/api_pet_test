@@ -13,27 +13,27 @@ def validator_pet(response,body, schema_validation):
                 if key_response == 'id':
                     continue
                 elif isinstance(value_response,dict):
-                    validator_dict(value_body,value_response)
+                    validator_dict(value_body,value_response,key_response)
                 elif isinstance (value_response,list):
-                    validator_list(value_body,value_response)                   
+                    validator_list(value_body,value_response,key_response)                   
                 else:
-                    assert value_response == value_body, f'ERROR: {value_response} != {value_body}'
+                    assert value_response == value_body, f'ERROR VALIDATOR IN {key_response}: {value_response} != {value_body}'
         return True
 
     except ValidationError:
             return False
     
-def validator_dict(value_body, value_response):
+def validator_dict(value_body, value_response,key_response):
     for key, value in value_response.items():
         if key not in value_body:
             assert value == 0
         else:
-            assert value == value_body[key]
+            assert value == value_body[key], f'ERROR VALIDATOR IN {key_response}: {value} != {value_body[key]}'
 
 
-def validator_list(value_body, value_response):
+def validator_list(value_body, value_response,key_response):
     for index, item in enumerate(value_response):
         if isinstance(item,dict):
-            validator_dict(value_body[index],item)
+            validator_dict(value_body[index],item,key_response)
         else:
-            assert value_body[index] == item
+            assert value_body[index] == item , f'ERROR VALIDATOR IN {key_response}: {value_body[index]} != {item}'
