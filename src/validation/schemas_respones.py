@@ -1,12 +1,18 @@
-from dataclasses import dataclass
-from typing import List, Dict
+from typing import List, Optional
+from pydantic import BaseModel, Field
 
+class Category(BaseModel):
+    id: Optional [int]  = None
+    name: Optional [str]  = None
 
-@dataclass
-class FullPetObject:
+class Tag(BaseModel):
+    id: Optional [int]  = None
+    name: Optional [str]  = None
+
+class FullPetObject(BaseModel):
     id: int
-    category: Dict[str, int | str]
-    name: str
-    photoUrls: List[str]
-    tags: List[Dict[str, int | str]]
-    status: str
+    category: Optional[Category] = None
+    name: Optional [str]  = None
+    photoUrls: Optional[List[str]] = None
+    tags: Optional[List[Tag]] = None
+    status: Optional[str] = None
