@@ -3,7 +3,7 @@ from enum import Enum
 class API(Enum):
     URL = 'https://petstore.swagger.io/v2'
 
-class MethodPet:
+class PetGroup:
     BASE_URL = f'{API.URL.value}/pet'
     
     @classmethod
