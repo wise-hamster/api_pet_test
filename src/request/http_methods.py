@@ -5,8 +5,7 @@ class HttpMethods:
     @staticmethod 
     def get(url):
         result = requests.get(
-            url=url,
-            )
+            url=url)
         return result
 
     @staticmethod

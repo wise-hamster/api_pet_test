@@ -3,7 +3,6 @@ from src.validation.schemas_respones import FullPetObject
 from src.validation.validator import validator_pet
 from src.request.bodies import *
 import pytest
-import requests
 from requests import Response 
 from src.request.http_methods import HttpMethods
 
