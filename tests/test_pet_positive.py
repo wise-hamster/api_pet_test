@@ -12,7 +12,7 @@ class Test_Pet():
                                       pet_dog_without_id_in_tags,pet_dog_without_tags,pet_dog_without_photoUrls,
                                       pet_dog_without_name_in_category,pet_dog_without_id_in_category,pet_dog_without_category])
     def test_post_pet_full_1(self,pet_data,pet_ids_dict):
-        result_response: Response = HttpMethods.post(url=PetGroup().post_pet(),body= pet_data)
+        result_response= HttpMethods.post(url=PetGroup().post_pet(),body= pet_data)
         print('Send POST-request')
 
         #Check status code from request
